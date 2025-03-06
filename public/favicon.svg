@@ -1,0 +1,23 @@
+<!-- Save this as public/favicon.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1a1a1a; --soil: #5D4037; --trunk: #8D6E63; }
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #f9f9f9; --soil: #8B4513; --trunk: #6B4226; }
+    }
+  </style>
+  
+  <!-- Background -->
+  <circle cx="16" cy="16" r="16" fill="var(--bg, #f9f9f9)"/>
+  
+  <!-- Forest soil foundation (dark brown) -->
+  <rect x="0" y="24" width="32" height="8" fill="var(--soil, #8B4513)"/>
+  
+  <!-- Tree shapes remain the same, using CSS variables for color -->
+  <rect x="14" y="12" width="4" height="12" fill="var(--trunk, #6B4226)"/>
+  <circle cx="16" cy="10" r="8" fill="#2ECC71"/>
+  <circle cx="16" cy="8" r="6" fill="#27AE60"/>
+  <circle cx="16" cy="6" r="4" fill="#229954"/>
+</svg>

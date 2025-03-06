@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal Blog and Habit Tracker - A digital ecosystem for knowledge and growth"
+    />
+
+    <!-- Favicon - The visual identity of your application -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Preconnect to external resource domains to improve loading performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Font loading - Typography shapes how users perceive your application -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Forest Blog & Habit Tracker</title>
+
+    <!-- Initial styles to prevent flash of unstyled content -->
+    <style>
+      :root {
+        --color-primary: #3498db;
+        --color-secondary: #2ecc71;
+        --color-background: #f9f9f9;
+        --color-text: #333333;
+        --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+      }
+
+      body {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        font-family: var(--font-main);
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Initial loading state - Before React hydration */
+      #root:empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-image: radial-gradient(
+            circle at center,
+            rgba(52, 152, 219, 0.1) 0,
+            transparent 70%
+          ),
+          linear-gradient(
+            to bottom right,
+            rgba(46, 204, 113, 0.05),
+            transparent
+          );
+      }
+
+      #root:empty::before {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-left-color: var(--color-primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Dark mode support - Like a forest adapting to nightfall */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-background: #1a1a1a;
+          --color-text: #f5f5f5;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+    This div is the root where React will grow your component tree.
+    Like soil prepared for planting, it's initially empty but will
+    soon flourish with your application's components.
+  -->
+    <div id="root"></div>
+
+    <!-- 
+    Application entry script - The seed that grows into your application
+    Vite will replace this with the processed JavaScript bundle
+  -->
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- 
+    Fallback for browsers with JavaScript disabled
+    Like how forests have resilience mechanisms for adverse conditions
+  -->
+    <noscript>
+      <div style="padding: 2rem; text-align: center">
+        <h1>JavaScript is required</h1>
+        <p>
+          This application requires JavaScript to function. Please enable
+          JavaScript in your browser settings.
+        </p>
+      </div>
+    </noscript>
+  </body>
+</html>

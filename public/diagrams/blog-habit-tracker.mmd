@@ -1,0 +1,94 @@
+graph TD
+    subgraph "Forest Floor (Core Infrastructure)"
+        IL[Lifecycle Events System] --> |Coordinates| IC[Initialization Controller]
+        DB[IndexedDB Service] --> |Persists| MS[Migration Service]
+        MS --> |Upgrades| DB
+        IL --> |Notifies| DCO[Data Change Observer]
+        IL --> |Notifies| RO[Route Observer]
+    end
+
+    subgraph "Root System (Data Services)"
+        PS[Post Service] --> |Uses| DB
+        HS[Habit Service] --> |Uses| DB
+        SS[Settings Service] --> |Uses| DB
+        PS --> |Notifies| DCO
+        HS --> |Notifies| DCO
+        SS --> |Notifies| DCO
+    end
+
+    subgraph "Trunk (Application Core)"
+        AC[App Context] --> |Initializes| IL
+        AC --> |Configures| PS
+        AC --> |Configures| HS
+        AC --> |Provides State To| RC[React Components]
+        EB[Error Boundary] --> |Protects| RC
+    end
+
+    subgraph "Branches (Feature Modules)"
+        subgraph "Blog Module"
+            BP[Blog Pages] --> |Contains| BC[Blog Components]
+            BC --> |Uses| PS
+            BC --> |Subscribes To| DCO
+        end
+        
+        subgraph "Habit Module"
+            HP[Habit Pages] --> |Contains| HC[Habit Components]
+            HC --> |Uses| HS
+            HC --> |Subscribes To| DCO
+            HC --> |Visualizes| HV[Habit Visualizations]
+        end
+    end
+
+    subgraph "Leaves (User Interface)"
+        LC[Layout Components] --> |Structure| BC
+        LC --> |Structure| HC
+        MD[Markdown Processor] --> |Transforms| BC
+    end
+
+    subgraph "Seasonal Changes (Lifecycle)"
+        INI[Initialization] --> |When Complete| ACT[Active State]
+        ACT --> |On Route Change| RO
+        ACT --> |On Data Change| DCO
+        ACT --> |On Focus Lost| SUS[Suspended State]
+        SUS --> |On Focus Gained| ACT
+        ACT --> |On Shutdown| SHD[Shutdown]
+    end
+
+    %% Connect the forest layers
+    IC -.-> |Grows| AC
+    AC -.-> |Coordinates| BP
+    AC -.-> |Coordinates| HP
+    DCO -.-> |Refreshes| BC
+    DCO -.-> |Refreshes| HC
+    RO -.-> |Updates| LC
+
+    %% User interaction flow
+    UI[User Interaction] --> LC
+    UI --> BC
+    UI --> HC
+    BC --> |Updates| PS
+    HC --> |Updates| HS
+    
+    %% Data flow cycle
+    PS -.-> |Changes Detected| DCO
+    HS -.-> |Changes Detected| DCO
+    DCO -.-> |Notifies| IL
+    IL -.-> |Triggers| BC
+    IL -.-> |Triggers| HC
+    
+    %% Lifecycle flow
+    classDef soil fill:#8B4513,color:#FFF,stroke:#000
+    classDef roots fill:#A0522D,color:#FFF,stroke:#000
+    classDef trunk fill:#6B8E23,color:#FFF,stroke:#000
+    classDef branch fill:#228B22,color:#FFF,stroke:#000
+    classDef leaf fill:#32CD32,color:#000,stroke:#000
+    classDef seasonal fill:#87CEEB,color:#000,stroke:#000
+    classDef user fill:#FF6347,color:#FFF,stroke:#000
+    
+    class IL,IC,DB,MS,DCO,RO soil
+    class PS,HS,SS roots
+    class AC,EB,RC trunk
+    class BP,BC,HP,HC,HV branch
+    class LC,MD leaf
+    class INI,ACT,SUS,SHD seasonal
+    class UI user
