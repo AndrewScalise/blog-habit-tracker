@@ -1,0 +1,545 @@
+/* Habit tracking system with cross-theme compatibility */
+
+/* Foundational architectural patterns */
+.habit-tracker {
+  padding: calc(var(--spacing-unit) * 2);
+}
+
+/* =============================================
+   Control Surfaces & Navigation Elements
+   ============================================= */
+.habit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: calc(var(--spacing-unit) * 4);
+}
+
+.habit-header h1 {
+  margin: 0;
+  color: var(--color-text); /* Theme-aware text color */
+  transition: color var(--transition-medium);
+}
+
+.create-habit-button {
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-medium),
+    transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.create-habit-button:hover {
+  background-color: var(--color-secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.dark-theme .create-habit-button:hover {
+  background-color: var(--color-secondary-light);
+}
+
+/* =============================================
+   Measurement & Progress Visualization
+   ============================================= */
+.habit-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 5);
+}
+
+.stat-card {
+  background-color: var(--color-card);
+  border-radius: var(--border-radius-lg);
+  padding: calc(var(--spacing-unit) * 3);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform var(--transition-medium),
+    box-shadow var(--transition-medium),
+    background-color var(--transition-medium);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  transition: color var(--transition-medium);
+}
+
+.stat-label {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  transition: color var(--transition-medium);
+}
+
+/* =============================================
+   Content Container Structure
+   ============================================= */
+.habits-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: calc(var(--spacing-unit) * 3);
+}
+
+/* =============================================
+   Individual Habit Cards
+   ============================================= */
+.habit-card {
+  background-color: var(--color-card);
+  border-radius: var(--border-radius-lg);
+  padding: calc(var(--spacing-unit) * 3);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-medium),
+    box-shadow var(--transition-medium),
+    background-color var(--transition-medium);
+}
+
+.habit-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.habit-info {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  flex-grow: 1;
+}
+
+.habit-name {
+  font-size: 1.25rem;
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  color: var(--color-text);
+  transition: color var(--transition-medium);
+}
+
+.habit-description {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  transition: color var(--transition-medium);
+}
+
+.habit-streak {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 1);
+}
+
+.streak-count {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  transition: color var(--transition-medium);
+}
+
+.streak-label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-medium);
+}
+
+/* =============================================
+   Interactive Action Elements
+   ============================================= */
+.habit-completion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.completion-button {
+  background-color: var(--color-surface);
+  border: none;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-medium),
+    color var(--transition-medium);
+  width: 100%;
+}
+
+.completion-button:hover {
+  background-color: var(--color-border);
+}
+
+.completion-button.completed {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.completion-button.completed:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+.dark-theme .completion-button.completed:hover {
+  background-color: var(--color-secondary-light);
+}
+
+.last-completed {
+  margin-top: calc(var(--spacing-unit) * 1);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-medium);
+}
+
+/* =============================================
+   Form Container Components
+   ============================================= */
+.habit-form-container {
+  background-color: var(--color-card);
+  border-radius: var(--border-radius-lg);
+  padding: calc(var(--spacing-unit) * 4);
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-medium);
+}
+
+.habit-form-container h2 {
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  color: var(--color-text);
+  transition: color var(--transition-medium);
+}
+
+.habit-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 3);
+}
+
+/* Input fields should be styled in a component-specific file */
+
+.day-selector {
+  display: flex;
+  gap: calc(var(--spacing-unit) * 1);
+  flex-wrap: wrap;
+}
+
+.day-button {
+  background-color: var(--color-surface);
+  border: none;
+  padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 1.5);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-medium),
+    color var(--transition-medium);
+  color: var(--color-text);
+}
+
+.day-button:hover {
+  background-color: var(--color-border);
+}
+
+.day-button.selected {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.dark-theme .day-button.selected {
+  background-color: var(--color-primary-light);
+}
+
+.form-actions {
+  display: flex;
+  gap: calc(var(--spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 2);
+}
+
+.save-button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-medium),
+    transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.save-button:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.dark-theme .save-button:hover {
+  background-color: var(--color-primary-light);
+}
+
+.cancel-button {
+  background-color: var(--color-surface);
+  border: none;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-medium);
+  color: var(--color-text);
+}
+
+.cancel-button:hover {
+  background-color: var(--color-border);
+}
+
+/* =============================================
+   Empty State Component
+   ============================================= */
+.no-habits {
+  grid-column: 1 / -1;
+  text-align: center;
+  background-color: var(--color-card);
+  padding: calc(var(--spacing-unit) * 6);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-medium);
+}
+
+.no-habits p {
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-medium);
+}
+
+.start-button {
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-medium),
+    transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.start-button:hover {
+  background-color: var(--color-secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.dark-theme .start-button:hover {
+  background-color: var(--color-secondary-light);
+}
+
+/* =============================================
+   Navigation Active State
+   ============================================= */
+.site-nav a.active {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  transition: color var(--transition-medium);
+}
+
+.dark-theme .site-nav a.active {
+  color: var(--color-primary-light);
+}
+
+/* =============================================
+   Data Visualization Components
+   ============================================= */
+.habit-chart {
+  background-color: var(--color-card);
+  border-radius: var(--border-radius-lg);
+  padding: calc(var(--spacing-unit) * 3);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  transition: background-color var(--transition-medium);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+.chart-title {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  transition: color var(--transition-medium);
+}
+
+.completion-rate {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  transition: color var(--transition-medium);
+}
+
+.dark-theme .completion-rate {
+  color: var(--color-primary-light);
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: calc(var(--spacing-unit) * 1);
+  height: 120px;
+}
+
+.chart-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.day-bar {
+  width: 70%;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-sm);
+  position: absolute;
+  bottom: 20px;
+  transition: height var(--transition-medium),
+    background-color var(--transition-medium);
+}
+
+.chart-day.completed .day-bar {
+  background-color: var(--color-secondary);
+}
+
+.chart-day.missed .day-bar {
+  background-color: var(--color-border);
+}
+
+.day-label {
+  position: absolute;
+  bottom: 0;
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-medium);
+}
+
+/* =============================================
+   Habit Summary Component
+   ============================================= */
+.habit-summary {
+  background-color: var(--color-card);
+  border-radius: var(--border-radius-lg);
+  padding: calc(var(--spacing-unit) * 3);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  transition: background-color var(--transition-medium);
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+.summary-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  transition: color var(--transition-medium);
+}
+
+.today-date {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  transition: color var(--transition-medium);
+}
+
+.summary-stats {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 4);
+}
+
+.stat-progress {
+  width: 120px;
+  text-align: center;
+}
+
+.circular-chart {
+  width: 100%;
+  height: auto;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: var(--color-surface);
+  stroke-width: 3.8;
+  transition: stroke var(--transition-medium);
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  transition: stroke-dasharray var(--transition-medium),
+    stroke var(--transition-medium);
+  stroke: var(--color-primary);
+}
+
+.dark-theme .circle {
+  stroke: var(--color-primary-light);
+}
+
+.percentage {
+  fill: var(--color-text);
+  font-size: 0.5em;
+  text-anchor: middle;
+  font-weight: var(--font-weight-bold);
+  transition: fill var(--transition-medium);
+}
+
+.progress-label {
+  margin-top: calc(var(--spacing-unit) * 1);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-medium);
+}
+
+.stat-details {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+/* Enhanced dark mode visibility for stats */
+.dark-theme .stat-value {
+  color: var(--color-primary-light);
+  text-shadow: 0 0 8px rgba(115, 138, 255, 0.2);
+}
+
+.dark-theme .habit-summary .stat-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+}
+
+/* Enhanced interaction states for dark theme */
+.dark-theme .habit-card:hover,
+.dark-theme .stat-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background-color: var(--color-surface);
+}
+
+/* SVG elements need special attention in dark mode */
+.dark-theme .chart-day.completed .day-bar {
+  background-color: var(--color-secondary-light);
+  box-shadow: 0 0 8px rgba(157, 78, 218, 0.3);
+}

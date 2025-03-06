@@ -1,0 +1,220 @@
+/* src/styles/header.css */
+/* Styles for the application header with theme toggle */
+
+/* Header container */
+.site-header {
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all var(--transition-medium);
+}
+
+/* Elevated state for header (when scrolled) */
+.site-header.elevated {
+  box-shadow: var(--shadow-small);
+  background-color: var(--color-background-elevated);
+}
+
+.dark-theme .site-header {
+  background-color: var(--color-background-dark);
+  border-color: var(--color-border-dark);
+}
+
+.dark-theme .site-header.elevated {
+  background-color: var(--color-background-elevated-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Inner container with max width */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+/* Logo styling */
+.site-logo {
+  display: flex;
+  align-items: center;
+}
+
+.site-logo a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: 700;
+  transition: color var(--transition-medium);
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+}
+
+/* Navigation container */
+.navigation-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Navigation items */
+.site-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  transition: all var(--transition-medium);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.site-nav a:hover {
+  color: var(--color-primary);
+}
+
+.site-nav a.active {
+  color: var(--color-primary);
+}
+
+/* Active indicator for navigation - like new growth */
+.site-nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: all var(--transition-medium);
+}
+
+.dark-theme .site-nav a.active::after {
+  background-color: var(--color-primary-light);
+}
+
+/* Mobile hamburger menu */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 20px;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: all var(--transition-medium);
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 1rem;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+    z-index: 110;
+  }
+
+  .navigation-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: var(--color-background-elevated);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform var(--transition-medium);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 1.5rem 2rem;
+    z-index: 100;
+  }
+
+  .dark-theme .navigation-container {
+    background-color: var(--color-background-elevated-dark);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .navigation-container.open {
+    transform: translateX(0);
+  }
+
+  .site-nav {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .site-nav a {
+    display: block;
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+
+  /* Animated hamburger to X transformation */
+  .mobile-menu-toggle[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .mobile-menu-toggle[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-toggle[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* Overlay when menu is open */
+  .navigation-container.open::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    animation: fade-in var(--transition-medium) forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

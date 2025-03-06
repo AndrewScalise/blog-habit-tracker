@@ -1,0 +1,123 @@
+/* Styles for the theme toggle component */
+
+/* Container for the toggle button */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-background-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 30px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  gap: 8px;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark theme adjustments for the toggle */
+.dark-theme .theme-toggle {
+  background-color: var(--color-background-elevated-dark);
+  border-color: var(--color-border-dark);
+}
+
+/* Hover and focus states */
+.theme-toggle:hover {
+  box-shadow: var(--shadow-small);
+  transform: translateY(-2px);
+}
+
+.theme-toggle:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+/* Icons within the toggle */
+.theme-toggle-icon {
+  transition: all var(--transition-medium);
+  stroke: var(--color-text-secondary);
+  opacity: 0;
+  transform: scale(0.7);
+  position: absolute;
+  left: 10px;
+}
+
+/* Active icon state */
+.theme-toggle-icon.active {
+  opacity: 1;
+  transform: scale(1);
+  position: static;
+}
+
+/* Light theme (sun icon) */
+.theme-toggle-icon:first-of-type {
+  color: #f39c12; /* Sunny yellow */
+}
+
+/* Dark theme (moon icon) */
+.theme-toggle-icon:nth-of-type(2) {
+  color: #9b59b6; /* Purple moonlight */
+}
+
+/* Text label inside toggle */
+.theme-toggle-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-left: 4px;
+  color: var(--color-text);
+  transition: all var(--transition-medium);
+}
+
+/* Different toggle locations */
+
+/* For header placement */
+.site-header .theme-toggle {
+  margin-left: auto; /* Push to right side */
+}
+
+/* For mobile header menu */
+@media (max-width: 768px) {
+  .site-header .theme-toggle {
+    margin: 0;
+    margin-top: 16px;
+  }
+}
+
+/* Animation for icon transitions */
+@keyframes rotate-in {
+  from {
+    transform: rotate(-90deg) scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-out {
+  from {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(90deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.theme-toggle-icon.active {
+  animation: rotate-in 0.3s forwards;
+}
+
+.theme-toggle-icon:not(.active) {
+  animation: rotate-out 0.3s forwards;
+}
+
+/* Accessibility: Remove animations when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-icon.active,
+  .theme-toggle-icon:not(.active) {
+    animation: none;
+  }
+}

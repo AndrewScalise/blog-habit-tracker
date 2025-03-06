@@ -1,0 +1,177 @@
+/* Core design tokens for themeable application */
+
+:root {
+  /* Color System - Light Theme (Default) */
+  --color-primary: #4361ee;
+  --color-primary-light: #738aff;
+  --color-primary-dark: #2845cf;
+  --color-secondary: #7209b7;
+  --color-secondary-light: #9d4eda;
+  --color-secondary-dark: #5a078f;
+
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-card: #ffffff;
+
+  --color-text: #2b2d42;
+  --color-text-secondary: #6c757d;
+  --color-text-tertiary: #adb5bd;
+
+  --color-border: #dee2e6;
+  --color-divider: #e9ecef;
+
+  --color-success: #198754;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+  --color-info: #0dcaf0;
+
+  --color-focus-ring: rgba(67, 97, 238, 0.4);
+
+  /* Typography */
+  --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "SF Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo,
+    Courier, monospace;
+
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-unit: 0.5rem; /* 8px base unit */
+
+  /* Border radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 1rem;
+  --border-radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-medium: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Z-index scale */
+  --z-below: -1;
+  --z-normal: 0;
+  --z-above: 1;
+  --z-dropdown: 1000;
+  --z-sticky: 1200;
+  --z-fixed: 1300;
+  --z-modal-backdrop: 1400;
+  --z-modal: 1500;
+  --z-popover: 1600;
+  --z-tooltip: 1700;
+}
+
+/* Dark Theme Variables */
+.dark-theme {
+  --color-primary: #738aff;
+  --color-primary-light: #9dabff;
+  --color-primary-dark: #4361ee;
+  --color-secondary: #9d4eda;
+  --color-secondary-light: #bf7af0;
+  --color-secondary-dark: #7209b7;
+
+  --color-background: #121212;
+  --color-surface: #1e1e1e;
+  --color-card: #2c2c2c;
+
+  --color-text: #f8f9fa;
+  --color-text-secondary: #adb5bd;
+  --color-text-tertiary: #6c757d;
+
+  --color-border: #343a40;
+  --color-divider: #2c3237;
+
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+  --color-info: #17a2b8;
+
+  --color-focus-ring: rgba(115, 138, 255, 0.4);
+
+  /* Shadow adjustments for dark theme */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+    0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* High Contrast Theme Variables */
+.high-contrast-theme {
+  --color-primary: #0066cc;
+  --color-primary-light: #3399ff;
+  --color-primary-dark: #004c99;
+  --color-secondary: #cc00cc;
+  --color-secondary-light: #ff33ff;
+  --color-secondary-dark: #990099;
+
+  --color-background: #ffffff;
+  --color-surface: #f5f5f5;
+  --color-card: #ffffff;
+
+  --color-text: #000000;
+  --color-text-secondary: #333333;
+  --color-text-tertiary: #666666;
+
+  --color-border: #000000;
+  --color-divider: #333333;
+
+  --color-success: #006600;
+  --color-warning: #cc6600;
+  --color-error: #cc0000;
+  --color-info: #006699;
+
+  --color-focus-ring: rgba(0, 102, 204, 0.6);
+
+  /* Increased contrast for focus states */
+  --focus-outline-width: 3px;
+}
+
+/* Responsive breakpoints as custom properties */
+:root {
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+}
+
+/* Print styles variable adjustments */
+@media print {
+  :root {
+    --color-background: #ffffff;
+    --color-text: #000000;
+    --color-text-secondary: #333333;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --shadow-xl: none;
+  }
+}

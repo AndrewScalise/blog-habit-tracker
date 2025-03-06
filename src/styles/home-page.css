@@ -1,0 +1,569 @@
+/* Styles for the HomePage component reflecting the digital forest ecosystem concept */
+
+/* =============================================
+   Hero Section - The Forest Canopy
+   ============================================= */
+.hero-section {
+  position: relative;
+  min-height: 60vh;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-dark),
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 4);
+  overflow: hidden;
+  color: white;
+  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Subtle leaf-like patterns in the background */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 80% 60%,
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 2px
+    );
+  background-size: 100px 100px;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  width: 100%;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.hero-content h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content p {
+  font-size: var(--font-size-lg);
+  max-width: 600px;
+  margin: 0 auto calc(var(--spacing-unit) * 4) auto;
+  opacity: 0.9;
+}
+
+.hero-cta {
+  display: flex;
+  gap: calc(var(--spacing-unit) * 4); /* Increased spacing between buttons */
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: calc(var(--spacing-unit) * 3);
+}
+
+.button {
+  display: inline-block;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  transition: all var(--transition-medium);
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.primary-button {
+  background-color: white;
+  color: var(--color-primary-dark);
+}
+
+.primary-button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.secondary-button {
+  background-color: transparent;
+  border-color: white;
+  color: white;
+}
+
+.secondary-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* =============================================
+     Home Content Area - Forest Undergrowth
+     ============================================= */
+.home-content {
+  margin: calc(var(--spacing-unit) * -6) auto 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 4);
+  position: relative;
+  z-index: 3;
+  max-width: 1100px;
+  padding: 0 calc(var(--spacing-unit) * 2);
+}
+
+@media (min-width: 992px) {
+  .home-content {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.home-section {
+  background-color: var(--color-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: calc(var(--spacing-unit) * 4);
+  transition: transform var(--transition-medium),
+    box-shadow var(--transition-medium);
+}
+
+.home-section:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.section-header h2 {
+  font-size: var(--font-size-2xl);
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.section-link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  transition: color var(--transition-fast);
+}
+
+.section-link:hover {
+  color: var(--color-primary);
+}
+
+.section-link::after {
+  content: "→";
+  margin-left: calc(var(--spacing-unit) * 0.5);
+}
+
+/* =============================================
+     Recent Posts Section - New Growth
+     ============================================= */
+.post-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 2);
+}
+
+@media (min-width: 768px) {
+  .post-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .post-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Empty state styling */
+.empty-state {
+  text-align: center;
+  padding: calc(var(--spacing-unit) * 3);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-surface);
+}
+
+.empty-state p {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  color: var(--color-text-secondary);
+}
+
+.empty-state .button {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.empty-state .button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Loading state */
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--spacing-unit) * 4);
+  color: var(--color-text-secondary);
+  position: relative;
+}
+
+.loading-indicator::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: calc(var(--spacing-unit) * 1.5);
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* =============================================
+     Habit Summary Section - Seasonal Patterns
+     ============================================= */
+.stats-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 2);
+}
+
+@media (min-width: 576px) {
+  .stats-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stat-card {
+  position: relative;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  padding: calc(var(--spacing-unit) * 3);
+  text-align: center;
+  overflow: hidden;
+  transition: transform var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: calc(var(--spacing-unit) * 1);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: var(--color-primary);
+  transition: width var(--transition-medium);
+}
+
+/* =============================================
+     Footer Styles - Forest Floor
+     ============================================= */
+footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 3);
+  margin-top: calc(var(--spacing-unit) * 6);
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 4);
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+.footer-logo {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.footer-about p {
+  color: var(--color-text-secondary);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  line-height: 1.7;
+}
+
+.footer-nav h4,
+.footer-connect h4 {
+  font-size: var(--font-size-lg);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  color: var(--color-text);
+  position: relative;
+  display: inline-block;
+}
+
+.footer-nav h4::after,
+.footer-connect h4::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: var(--border-radius-full);
+}
+
+.footer-nav ul,
+.footer-connect ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-nav li,
+.footer-connect li {
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.footer-nav a,
+.footer-connect a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  display: inline-block;
+  position: relative;
+}
+
+.footer-nav a:hover,
+.footer-connect a:hover {
+  color: var(--color-primary);
+  transform: translateX(5px);
+}
+
+.footer-bottom {
+  margin-top: calc(var(--spacing-unit) * 6);
+  padding-top: calc(var(--spacing-unit) * 3);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 2);
+}
+
+.copyright {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+  border-radius: var(--border-radius-full);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-medium);
+  margin-left: auto; /* Pushes the toggle button to the right */
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-background);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle svg {
+  margin-right: calc(var(--spacing-unit));
+  width: 16px;
+  height: 16px;
+}
+
+.dark-theme .theme-toggle {
+  background-color: var(--color-surface);
+}
+
+.dark-theme .footer-nav a:hover,
+.dark-theme .footer-connect a:hover {
+  color: var(--color-primary-light);
+}
+
+/* =============================================
+     Concept Section - Forest Philosophy
+     ============================================= */
+.concept-section {
+  background-color: var(--color-surface);
+  padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 8);
+}
+
+.concept-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.concept-content h2 {
+  font-size: var(--font-size-3xl);
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  color: var(--color-primary);
+}
+
+.concept-content > p {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto calc(var(--spacing-unit) * 6) auto;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+}
+
+.concept-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 4);
+}
+
+@media (min-width: 768px) {
+  .concept-features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature {
+  background-color: var(--color-card);
+  border-radius: var(--border-radius-lg);
+  padding: calc(var(--spacing-unit) * 4);
+  box-shadow: var(--shadow-md);
+  border-top: 4px solid var(--color-primary);
+  transition: transform var(--transition-medium);
+}
+
+.feature:nth-child(2) {
+  border-top-color: var(--color-secondary);
+}
+
+.feature:nth-child(3) {
+  border-top-color: var(--color-success);
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature h3 {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  font-size: var(--font-size-xl);
+  color: var(--color-text);
+}
+
+.feature p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* =============================================
+     Dark Theme Adjustments - Nighttime Forest
+     ============================================= */
+.dark-theme .hero-section {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-dark),
+    var(--color-primary),
+    var(--color-secondary-dark)
+  );
+}
+
+.dark-theme .feature {
+  background-color: var(--color-card);
+}
+
+.dark-theme .empty-state {
+  border-color: var(--color-border);
+  background-color: var(--color-surface);
+}
+
+/* =============================================
+     Animations
+     ============================================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Staggered animations for various elements */
+.stat-card:nth-child(1) {
+  animation: fadeIn 0.6s ease-out 0.2s backwards;
+}
+
+.stat-card:nth-child(2) {
+  animation: fadeIn 0.6s ease-out 0.3s backwards;
+}
+
+.stat-card:nth-child(3) {
+  animation: fadeIn 0.6s ease-out 0.4s backwards;
+}
+
+.feature:nth-child(1) {
+  animation: fadeIn 0.6s ease-out 0.3s backwards;
+}
+
+.feature:nth-child(2) {
+  animation: fadeIn 0.6s ease-out 0.4s backwards;
+}
+
+.feature:nth-child(3) {
+  animation: fadeIn 0.6s ease-out 0.5s backwards;
+}

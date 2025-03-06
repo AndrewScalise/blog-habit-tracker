@@ -1,0 +1,394 @@
+/* =============================================
+   Post Creation System: Theme-Adaptive Architecture
+   ============================================= */
+
+/*
+ * This stylesheet implements a dual-layer pattern system where:
+ * 1. Structural patterns define spatial relationships 
+ * 2. Visual patterns adapt to theme context
+ * 
+ * Core architectural principle: Content creation interfaces must maintain
+ * cognitive continuity regardless of visual theme changes
+ */
+
+/* =============================================
+   Container Architecture - Content Workspace
+   ============================================= */
+.create-post-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--color-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: background-color var(--transition-medium),
+    box-shadow var(--transition-medium);
+}
+
+/* =============================================
+     Navigation & Control Surface
+     ============================================= */
+.create-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--spacing-unit) * 3);
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color var(--transition-medium);
+}
+
+.create-header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--color-text);
+  transition: color var(--transition-medium);
+}
+
+.create-actions {
+  display: flex;
+  gap: calc(var(--spacing-unit) * 2);
+}
+
+/* Control buttons pattern */
+.toggle-guide-button,
+.toggle-preview-button {
+  padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+  background-color: var(--color-surface);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-medium),
+    color var(--transition-medium), transform var(--transition-fast);
+  color: var(--color-text);
+}
+
+.toggle-guide-button:hover,
+.toggle-preview-button:hover {
+  background-color: var(--color-border);
+  transform: translateY(-2px);
+}
+
+/* Primary action highlight pattern */
+.toggle-preview-button {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.toggle-preview-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.dark-theme .toggle-preview-button:hover {
+  background-color: var(--color-primary-light);
+}
+
+/* =============================================
+     Reference & Learning System - Markdown Guide
+     ============================================= */
+.markdown-guide {
+  padding: calc(var(--spacing-unit) * 3);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-medium),
+    border-color var(--transition-medium);
+}
+
+.markdown-guide h3 {
+  margin-top: 0;
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  font-size: 1.25rem;
+  color: var(--color-text);
+  transition: color var(--transition-medium);
+}
+
+.guide-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: calc(var(--spacing-unit) * 3);
+}
+
+.guide-section h4 {
+  margin-top: 0;
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  font-size: 1rem;
+  color: var(--color-text);
+  transition: color var(--transition-medium);
+}
+
+.guide-section ul {
+  padding-left: calc(var(--spacing-unit) * 3);
+  margin-bottom: 0;
+}
+
+.guide-section li {
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  transition: color var(--transition-medium);
+}
+
+/* Code representation pattern - consistent across themes */
+.guide-section code {
+  font-family: var(--font-mono);
+  background-color: var(--color-card);
+  padding: calc(var(--spacing-unit) * 0.25) calc(var(--spacing-unit) * 0.5);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8em;
+  transition: background-color var(--transition-medium),
+    color var(--transition-medium);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.dark-theme .guide-section code {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-border);
+}
+
+.guide-section pre {
+  background-color: var(--color-surface);
+  padding: calc(var(--spacing-unit) * 1);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  white-space: pre-wrap;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition: background-color var(--transition-medium),
+    color var(--transition-medium), border-color var(--transition-medium);
+}
+
+.dark-theme .guide-section pre {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* =============================================
+     Content Creation Workspace
+     ============================================= */
+.create-content {
+  padding: calc(var(--spacing-unit) * 3);
+}
+
+/* =============================================
+     Input System - Form Elements
+     ============================================= */
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 3);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  transition: color var(--transition-medium);
+}
+
+/* Metadata pattern - less visually important */
+.optional {
+  font-weight: normal;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  transition: color var(--transition-medium);
+}
+
+/* Input field consistency pattern */
+.form-group input,
+.form-group textarea {
+  padding: calc(var(--spacing-unit) * 1.5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: var(--color-card);
+  color: var(--color-text);
+  transition: border-color var(--transition-medium),
+    background-color var(--transition-medium), color var(--transition-medium),
+    box-shadow var(--transition-fast);
+}
+
+/* Focus state enhancement pattern */
+.form-group textarea:focus,
+.form-group input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.dark-theme .form-group textarea:focus,
+.dark-theme .form-group input:focus {
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+/* Content editor specialized styling */
+.content-editor {
+  font-family: var(--font-mono);
+  min-height: 400px;
+  resize: vertical;
+  tab-size: 2;
+}
+
+.dark-theme .content-editor {
+  background-color: var(--color-surface);
+}
+
+.submit-button {
+  align-self: flex-start;
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-medium),
+    transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.submit-button:hover {
+  background-color: var(--color-secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.dark-theme .submit-button:hover {
+  background-color: var(--color-secondary-light);
+}
+
+/* =============================================
+     Preview System
+     ============================================= */
+.post-preview {
+  transition: opacity var(--transition-medium);
+}
+
+.preview-header {
+  padding-bottom: calc(var(--spacing-unit) * 2);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color var(--transition-medium);
+}
+
+.preview-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-medium);
+}
+
+.cover-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: var(--border-radius-lg);
+  margin-bottom: calc(var(--spacing-unit) * 4);
+}
+
+/* =============================================
+     Utility Pattern System
+     ============================================= */
+.hidden {
+  display: none;
+}
+
+.edit-mode .post-preview,
+.preview-mode .post-form {
+  display: none;
+}
+
+/* =============================================
+     Responsive Pattern System
+     ============================================= */
+@media (max-width: 768px) {
+  .create-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(var(--spacing-unit) * 2);
+  }
+
+  .guide-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+     Split View Pattern - Advanced Interface
+     ============================================= */
+@media (min-width: 1200px) {
+  .create-content.edit-mode,
+  .create-content.preview-mode {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(var(--spacing-unit) * 4);
+  }
+
+  .edit-mode .post-preview,
+  .preview-mode .post-form {
+    display: block;
+  }
+
+  .edit-mode .post-form {
+    border-right: 1px solid var(--color-border);
+    padding-right: calc(var(--spacing-unit) * 4);
+    transition: border-color var(--transition-medium);
+  }
+
+  .edit-mode .post-preview {
+    opacity: 0.7;
+  }
+
+  .preview-mode .post-form {
+    opacity: 0.7;
+  }
+}
+
+/* =============================================
+     Dark Theme Enhancement Patterns 
+     ============================================= */
+
+/* Improved code visibility in dark mode */
+.dark-theme .guide-section code,
+.dark-theme .guide-section pre {
+  color: #e2e8f0;
+}
+
+/* Enhanced form field contrast */
+.dark-theme .form-group input,
+.dark-theme .form-group textarea {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+/* Input/output distinction in dark mode */
+.dark-theme .post-preview {
+  background-color: var(--color-card);
+  padding: calc(var(--spacing-unit) * 2);
+  border-radius: var(--border-radius-md);
+}
+
+/* Reduced visual strain patterns */
+.dark-theme .content-editor {
+  color: #e2e8f0;
+}
+
+/* Interactive element prominence */
+.dark-theme .submit-button,
+.dark-theme .toggle-preview-button {
+  box-shadow: 0 0 15px rgba(var(--color-primary-dark), 0.1);
+}
+
+.dark-theme .submit-button:hover,
+.dark-theme .toggle-preview-button:hover {
+  box-shadow: 0 0 20px rgba(var(--color-primary-light), 0.15);
+}

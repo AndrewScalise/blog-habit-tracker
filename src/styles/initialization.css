@@ -1,0 +1,353 @@
+/* src/styles/initialization.css */
+/* Styling for application initialization states */
+
+/* Initializing State */
+.app-initializing {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-main);
+}
+
+.initializing-content {
+  text-align: center;
+  padding: calc(var(--spacing-unit) * 4);
+  max-width: 500px;
+}
+
+.initializing-content h1 {
+  font-size: 1.75rem;
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 3);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-indicator p {
+  color: var(--color-text-light);
+  font-size: 1rem;
+}
+
+/* Error State */
+.app-error {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-main);
+}
+
+.error-content {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: calc(var(--spacing-unit) * 6);
+  max-width: 600px;
+  width: 90%;
+}
+
+.error-content h1 {
+  color: #e74c3c;
+  font-size: 1.75rem;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  font-weight: 600;
+}
+
+.error-message {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  font-size: 1rem;
+}
+
+.error-details {
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  padding: calc(var(--spacing-unit) * 2);
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: #e74c3c;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.error-actions {
+  display: flex;
+  gap: calc(var(--spacing-unit) * 2);
+  flex-wrap: wrap;
+}
+
+.retry-button,
+.reset-button {
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: none;
+}
+
+.retry-button {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.retry-button:hover {
+  background-color: #2980b9;
+}
+
+.reset-button {
+  background-color: #f1f1f1;
+  color: var(--color-text);
+}
+
+.reset-button:hover {
+  background-color: #e5e5e5;
+}
+
+/* Application Ready Animation */
+.app-ready-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-background);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.app-ready-animation.fade-out {
+  opacity: 0;
+}
+
+.app-logo-animation {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.app-logo-circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  opacity: 0.7;
+  transform: scale(0);
+  animation: pulse 1.5s ease-out forwards;
+}
+
+.logo-circle-1 {
+  width: 100%;
+  height: 100%;
+  animation-delay: 0s;
+}
+
+.logo-circle-2 {
+  width: 70%;
+  height: 70%;
+  top: 15%;
+  left: 15%;
+  background-color: var(--color-secondary);
+  animation-delay: 0.3s;
+}
+
+.logo-circle-3 {
+  width: 40%;
+  height: 40%;
+  top: 30%;
+  left: 30%;
+  background-color: #f1c40f;
+  animation-delay: 0.6s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* Stage Indicators - Visual representation of initialization progress */
+.initialization-stages {
+  display: flex;
+  justify-content: center;
+  margin-top: calc(var(--spacing-unit) * 4);
+  gap: calc(var(--spacing-unit) * 1);
+}
+
+.stage-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.stage-indicator.active {
+  background-color: var(--color-primary);
+}
+
+.stage-indicator.completed {
+  background-color: var(--color-secondary);
+}
+
+/* Stage description */
+.stage-description {
+  margin-top: calc(var(--spacing-unit) * 2);
+  min-height: 1.5em;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  transition: opacity 0.3s ease;
+}
+
+/* Initialization progress bar */
+.initialization-progress {
+  margin-top: calc(var(--spacing-unit) * 4);
+  width: 100%;
+  height: 4px;
+  background-color: #f1f1f1;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+/* Indeterminate progress animation for when exact progress is unknown */
+.progress-bar.indeterminate {
+  width: 30%;
+  position: absolute;
+  animation: indeterminate-progress 1.5s infinite ease-in-out;
+}
+
+@keyframes indeterminate-progress {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Debugging information panel (hidden by default) */
+.initialization-debug {
+  margin-top: calc(var(--spacing-unit) * 4);
+  padding: calc(var(--spacing-unit) * 2);
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  max-height: 150px;
+  overflow-y: auto;
+  text-align: left;
+  display: none; /* Hidden by default */
+}
+
+.initialization-debug.visible {
+  display: block;
+}
+
+.debug-entry {
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+.debug-timestamp {
+  color: #7f8c8d;
+  margin-right: calc(var(--spacing-unit) * 1);
+}
+
+.debug-message {
+  color: var(--color-text);
+}
+
+.debug-error {
+  color: #e74c3c;
+}
+
+.debug-warning {
+  color: #f39c12;
+}
+
+.debug-success {
+  color: #27ae60;
+}
+
+/* Debug toggle button */
+.debug-toggle {
+  margin-top: calc(var(--spacing-unit) * 2);
+  background: none;
+  border: none;
+  color: var(--color-text-light);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  font-family: var(--font-main);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .initializing-content {
+    padding: calc(var(--spacing-unit) * 2);
+  }
+
+  .error-content {
+    padding: calc(var(--spacing-unit) * 3);
+  }
+
+  .error-actions {
+    flex-direction: column;
+  }
+
+  .retry-button,
+  .reset-button {
+    width: 100%;
+  }
+}
